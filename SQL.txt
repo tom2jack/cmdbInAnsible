@@ -1,0 +1,68 @@
+#MySQL5.7才支持json字段格式
+
+t_disk | CREATE TABLE `t_disk` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `devices` varchar(20) DEFAULT NULL,
+  `vendor` varchar(20) DEFAULT NULL,
+  `model` varchar(50) DEFAULT NULL,
+  `host` varchar(100) DEFAULT NULL,
+  `size` float DEFAULT NULL,
+  `nodename` varchar(50) DEFAULT NULL COMMENT '主机节点',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8
+
+
+t_interface | CREATE TABLE `t_interface` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `interface` varchar(20) DEFAULT NULL,
+  `ipv4` varchar(16) DEFAULT NULL,
+  `ipv6` varchar(30) DEFAULT NULL,
+  `macAddress` varchar(18) DEFAULT NULL,
+  `nodename` varchar(50) DEFAULT NULL COMMENT '主机节点',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8
+
+t_hostinfo | CREATE TABLE `t_hostinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nodename` varchar(50) DEFAULT NULL COMMENT 'ansible_nodename主机节点',
+  `form_factor` varchar(50) DEFAULT NULL COMMENT 'ansible_form_factor主机类型',
+  `virtualization_role` varchar(10) DEFAULT NULL,
+  `virtualization_type` varchar(20) DEFAULT NULL,
+  `system_vendor` varchar(20) DEFAULT NULL COMMENT 'ansible_system_vendor供应商',
+  `product_name` varchar(50) DEFAULT NULL COMMENT 'ansible_product_name产品型号',
+  `product_serial` varchar(50) DEFAULT NULL COMMENT 'ansible_product_serial序列号sn',
+  `machine` varchar(10) DEFAULT NULL COMMENT 'ansible_machine计算机体系结构',
+  `bios_version` varchar(50) DEFAULT NULL,
+  `system` varchar(20) DEFAULT NULL COMMENT 'ansible_system操作系统类型',
+  `os_family` varchar(20) DEFAULT NULL,
+  `distribution` varchar(20) DEFAULT NULL,
+  `distribution_major_version` tinyint(4) DEFAULT NULL,
+  `distribution_release` varchar(20) DEFAULT NULL,
+  `distribution_version` varchar(20) DEFAULT NULL,
+  `architecture` varchar(10) DEFAULT NULL COMMENT 'ansible_architecture体系',
+  `kernel` varchar(50) DEFAULT NULL COMMENT '操作系统内核版本号',
+  `userspace_architecture` varchar(10) DEFAULT NULL COMMENT '用户模式体系',
+  `userspace_bits` tinyint(4) DEFAULT NULL,
+  `pkg_mgr` varchar(10) DEFAULT NULL COMMENT 'ansible_pkg_mgr软件包管理器',
+  `selinux_status` varchar(10) DEFAULT NULL COMMENT 'selinux状态',
+  `processor` varchar(100) DEFAULT NULL,
+  `processor_count` int(8) DEFAULT NULL,
+  `processor_cores` int(8) DEFAULT NULL,
+  `processor_threads_per_core` int(8) DEFAULT NULL,
+  `processor_vcpus` int(10) DEFAULT NULL,
+  `memtotal` int(10) DEFAULT NULL COMMENT 'GB',
+  `swaptotal` int(10) DEFAULT NULL COMMENT 'GB',
+  `fqdn` varchar(50) DEFAULT NULL COMMENT 'ansible_fqdn',
+  `default_ipv4_interface` varchar(10) DEFAULT NULL,
+  `default_ipv4_address` varchar(20) DEFAULT NULL,
+  `default_ipv4_gateway` varchar(20) DEFAULT NULL,
+  `devices` json DEFAULT NULL COMMENT 'ansible_devices硬盘设备',
+  `interfaces` json DEFAULT NULL COMMENT 'ansible_interfaces网络接口',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8
+
+
+CREATE USER 'cmdb'@'%' IDENTIFIED BY 'password';
+GRANT ALL ON db_cmdb.t_hostinfo TO 'cmdb'@'%';
+GRANT ALL ON db_cmdb.t_interface TO 'cmdb'@'%';
+GRANT ALL ON db_cmdb.t_disk TO 'cmdb'@'%';

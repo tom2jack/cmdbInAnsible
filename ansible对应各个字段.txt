@@ -1,0 +1,50 @@
+ansible_nodename	节点名字
+ansible_form_factor 服务器类型
+ansible_virtualization_role 虚拟机角色（宿主机或者虚拟机）
+ansible_virtualization_type	虚拟机类型（kvm）
+
+ansible_system_vendor	供应商（Dell）
+ansible_product_name	产品型号（PowerEdge R530）
+ansible_product_serial	序列号（sn）
+ansible_machine			计算机架构（x86_64）
+ansible_bios_version	BIOS版本
+
+ansible_system	操作系统类型（linux）
+ansible_os_family	操作系统家族（RedHat）
+ansible_distribution	操作系统发行版（CentOS）
+ansible_distribution_major_version	操作系统发行版主版本号（7）
+ansible_distribution_release	操作系统发行版代号（core）
+ansible_distribution_version	操作系统发行版本号（7.3.1611）
+ansible_architecture	体系（x86_64）
+ansible_kernel	操作系统内核版本号
+ansible_userspace_architecture 用户模式体系（x86_64）
+ansible_userspace_bits	用户模式位数
+ansible_pkg_mgr	软件包管理器
+ansible_selinux.status selinux状态  #--------------------------------------------
+
+ansible_processor	CPU产品名称
+ansible_processor_count	CPU数量
+ansible_processor_cores	单颗CPU核心数量
+ansible_processor_threads_per_core	每个核心线程数量
+ansible_processor_vcpus	CPU核心总数
+
+ansible_memtotal_mb	内存空间
+ansible_swaptotal_mb	交换空间
+
+ansible_fqdn	主机的域名
+ansible_default_ipv4.interface	默认网卡
+ansible_default_ipv4.address	默认IP地址
+ansible_default_ipv4.gateway	默认网关
+
+********* json 格式 ********
+ansible_devices	硬盘设备名
+ansible_devices.vendor	硬盘供应商
+ansible_devices.model	硬盘整列卡型号	
+ansible_devices.host	硬盘整列卡控制器
+ansible_devices.size	设备存储空间
+
+********* json 格式 ********
+ansible_interfaces	网卡
+ansible_{interfaces}.ipv4.address	网卡IP地址
+ansible_{interfaces}.ipv6.0.address	网卡IPv6地址
+ansible_{interfaces}.macaddress	网卡mac地址

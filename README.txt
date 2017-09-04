@@ -1,0 +1,1 @@
+基于ansible API 2.0,数据存储于MySQL5.7。
