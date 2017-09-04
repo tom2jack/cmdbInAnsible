@@ -11,7 +11,7 @@ from ansible.plugins.callback import CallbackBase
 import MySQLdb
 
 def insert_DB(sql, args):
-    db = MySQLdb.connect("192.168.100.9","cmdb","123456","db_cmdb")
+    db = MySQLdb.connect("mysql_ip","user","password","db")
     cursor = db.cursor()
     try:
     	cursor.execute(sql % args)
